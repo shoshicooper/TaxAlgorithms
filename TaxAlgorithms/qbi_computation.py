@@ -1,4 +1,7 @@
 """
+(c) 2022 Shoshi (Sharon) Cooper.  No duplication is permitted for commercial use.  Any significant changes made must be
+stated explicitly and the original source code, if used, must be available and credited to Shoshi (Sharon) Cooper.
+
 The QBI Deduction made simple.
 
 I've discovered a way to make the QBI calculation far simpler.  It allows you to figure out much
