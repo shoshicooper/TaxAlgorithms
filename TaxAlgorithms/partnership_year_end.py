@@ -120,30 +120,3 @@ def compile_attributes(lst, attributes_to_compile):
     return arr
 
 
-
-# def compile_attributes(lst, attributes_to_compile, groupby):
-#     # TODO: more accurate if only match the month and day attributes for ==, not all the attributes
-#     #  This is okay for now and will work, but user typos will result in its no longer working.
-#     indices = {}
-#     where_placed = []
-#
-#     arr = None
-#     for attribute in attributes_to_compile:
-#         # Must group by year-end if the year-ends are the same
-#         row = []
-#         for x, partner in enumerate(lst):
-#             value = getattr(partner, attribute)
-#             if value in indices:
-#                 where_placed.append(indices[value])
-#             elif groupby == attribute:
-#                 indices[value] = len(row)
-#                 where_placed.append(len(row))
-#                 row.append(value)
-#             elif where_placed[x] >= len(row):
-#                 row.append(value)
-#             else:
-#                 row[where_placed[x]] += value
-#         row = np.array(row)
-#         arr = np.vstack((arr, row)) if arr is not None else row
-#     return arr
-
