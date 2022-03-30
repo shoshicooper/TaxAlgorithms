@@ -2243,3 +2243,16 @@ class PartialStake(object):
     #
     # def recapture_as_lambda(self):
     #     pass
+
+
+
+class Services(object):
+
+    def __init__(self, fair_market_value):
+        self._fmv = fair_market_value
+
+    @property
+    def fmv(self):
+        return self._fmv
+
+
