@@ -95,6 +95,10 @@ class AllGainSale(object):
     def __repr__(self):
         return str(self)
 
+    @property
+    def total(self):
+        return sum([getattr(self, x) for x in self.__slots__])
+
 
 class NetCapGains(object):
     """The netting process"""
