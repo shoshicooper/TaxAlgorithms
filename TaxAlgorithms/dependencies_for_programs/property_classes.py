@@ -674,7 +674,7 @@ class Property(ABC):
     def is_short_term(self, current_date):
         if self.date_acquired is None:
             return self.holding_period < 1
-        first_date_of_ownership = self.date_acquired + 1
+        first_date_of_ownership = timestamp_to_date(make_timestamp(self.date_acquired) + 24 * 60 * 60)
         date_req_to_be_ltcg = datetime.date(month=first_date_of_ownership.month,
                                             day=first_date_of_ownership.day,
                                             year=first_date_of_ownership.year + 1)
@@ -1435,9 +1435,6 @@ class InvestmentStock(InvestmentProperty):
                 date_acquired=date_acquired, liability=liability,
                 unrecognized_loss_from_related_party=unrecognized_loss_from_related_party, **kwargs)
         return super(InvestmentStock, cls).__new__(cls)
-        # cost_per_share=cost_per_share, fmv_per_share=fmv_per_share, num_shares=num_shares,
-        # date_acquired=date_acquired, liability=liability,
-        # unrecognized_loss_from_related_party=unrecognized_loss_from_related_party, **kwargs)
 
     def __init__(self, cost_per_share, fmv_per_share, num_shares, date_acquired, liability=0,
                  unrecognized_loss_from_related_party=0, **kwargs):
@@ -1788,7 +1785,7 @@ class Bonds(InvestmentProperty):
         self._date_issued = date_issued
 
     def get_income(self, date, **kwargs):
-        if date - self.date_acquired < 365:
+        if days_between(date, self.date_acquired) < 365:
             interest_payment_dates = [x for x in self._interest_payment_dates if self.date_acquired <= x <= date]
             num_payments = len(interest_payment_dates)
             return self._interest * self._face_value * num_payments
