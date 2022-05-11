@@ -6,10 +6,10 @@ The Dependents Decision tree has several trees inside it:
 """
 import collections
 from enum import Enum, auto
-from dependencies_for_programs.date_funcs import *
-from dependencies_for_programs.filing_status_enum import FilingStatus
-from dependencies_for_programs.irs_decision_tree_superclass import IrsDecisionTree
-from yearly_constants.load_yearly_constants import YearConstants
+from TaxAlgorithms.dependencies_for_programs.date_funcs import *
+from TaxAlgorithms.dependencies_for_programs.filing_status_enum import FilingStatus
+from TaxAlgorithms.dependencies_for_programs.irs_decision_tree_superclass import IrsDecisionTree
+from TaxAlgorithms.yearly_constants.load_yearly_constants import YearConstants
 
 
 class TaxPayerRelationships(Enum):
